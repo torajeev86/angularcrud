@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <div *ngIf="errormsg" class="alert alert-danger mt-2" role="alert">
+        {{errormsg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <div *ngIf="succmsg" class="alert alert-success" role="alert">
+        {{succmsg}}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    <!--<form [formGroup]="userForm" (ngSubmit)="userSubmit()">-->
+    <form [formGroup]="userForm">
+        <div class="col-lg-4 mt-2">
+            <input type="text" class="form-control" formControlName="fullname" placeholder="Enter your full name">
+        </div>
+        <div class="col-lg-4 mt-2">
+            <input type="text" class="form-control" formControlName="email" placeholder="Enter your email">
+        </div>
+        <div class="col-lg-4 mt-2">
+            <input type="text" class="form-control" formControlName="mobile" placeholder="Enter your mobile">
+        </div>
+        <div class="col-lg-4 mt-2">
+            <input #Image type="file" formControlName="image" (change)="handleFileInput($event.target.files)" />
+        </div>
+        <div *ngIf="!getParamId" class="col-lg-4 mt-2">
+            <button class="btn btn-primary btn-sm" (click)="userSubmit()">Submit</button>
+        </div>
+
+        <div *ngIf="getParamId" class="col-lg-4 mt-2">
+            <button class="btn btn-primary btn-sm" (click)="userUpdate()">Update</button>
+        </div>
+
+    </form>
+</div>

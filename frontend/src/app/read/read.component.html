@@ -1,0 +1,31 @@
+<div class="container mt-4"></div>
+<div *ngIf="delMsg" class="alert alert-success mt-2" role="alert">
+    {{delMsg}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<table class="table">
+<thead>
+<tr>
+    <th>#</th>
+    <th>Full Name</th>
+    <th>Email</th>
+    <th>Mobile</th>
+    <th>Image Name</th>
+    <th colspan="2">Action</th>
+</tr>
+</thead>
+<tbody>
+    <tr *ngFor = "let data of readData; let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{data.fullname}}</td>
+        <td>{{data.email}}</td>
+        <td>{{data.mobile}}</td>
+        <td><img src="http://localhost:3000/images/{{data.image_name}}" style="hight:100px; width:100px"></td>
+        <td><button class="btn btn-sm btn-danger" (click)=deleteUser(data.id)>Delete|{{data.id}}</button>
+        &nbsp;&nbsp;
+        <a class="btn btn-success" [routerLink]="['/create',data.id]">Edit</a>
+        </td>
+        
+    </tr>
+</tbody>
+</table>
